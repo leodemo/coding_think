@@ -24,14 +24,14 @@ def weighted_reservoir_sampling(weights, values, k):
         if random_choice <= (current_weight / new_total_weight):
             # 随机选择一个蓄水池中的元素进行替换
             reservoir_index = int(random_choice * (k - 1))
-            reservoir[reservoir_index] = (values[i], current_weight)
             total_weight += current_weight - reservoir[reservoir_index][1]
+            reservoir[reservoir_index] = (values[i], current_weight)
 
     # 返回蓄水池中的数值
     return [item[0] for item in reservoir]
 
 # 示例使用
-weights = [10, 20, 30, 4000, 50]  # 权重数组
+weights = [10, 20, 30, 400, 50]  # 权重数组
 values = ['a', 'b', 'c', 'd', 'e']  # 数值数组
 k = 3  # 要采样的数量
 
